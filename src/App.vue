@@ -1,8 +1,16 @@
 <template>
-  <h1>Resource App</h1>
+  <TheHeader />
 </template>
 
 <script>
+import TheHeader from "./components/layout/TheHeader.vue";
+
+export default {
+  components: {
+    TheHeader,
+  },
+  data() {},
+};
 </script>
 
 <style>
