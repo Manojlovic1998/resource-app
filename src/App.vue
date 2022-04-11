@@ -1,20 +1,24 @@
 <template>
   <TheHeader />
-  <BaseHero>
-    <h1>Welcome back, Nemanja</h1>
-    <p class="text-gray mb-0 sub-hero-heading">
-      You've got ... resources saved.
-    </p>
-  </BaseHero>
+  <TheMain>
+    <BaseHero>
+      <h1>Welcome back, Nemanja</h1>
+      <p class="text-gray mb-0 sub-hero-heading">
+        You've got ... resources saved.
+      </p>
+    </BaseHero>
+  </TheMain>
 </template>
 
 <script>
 import TheHeader from "./components/layout/TheHeader.vue";
 import BaseHero from "./components/UI/BaseHero.vue";
+import TheMain from "./components/layout/TheMain.vue";
 export default {
   components: {
     TheHeader,
     BaseHero,
+    TheMain,
   },
   data() {},
 };
