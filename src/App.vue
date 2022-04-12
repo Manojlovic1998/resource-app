@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     setMainComponent(compName) {
-      console.log(compName);
       this.mainComponent = compName;
     },
   },
