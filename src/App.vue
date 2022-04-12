@@ -7,6 +7,7 @@
         You've got ... resources saved.
       </p>
     </BaseHero>
+    <TheOptions />
   </TheMain>
 </template>
 
@@ -14,11 +15,14 @@
 import TheHeader from "./components/layout/TheHeader.vue";
 import BaseHero from "./components/UI/BaseHero.vue";
 import TheMain from "./components/layout/TheMain.vue";
+import TheOptions from "./components/layout/TheOptions.vue";
+
 export default {
   components: {
     TheHeader,
     BaseHero,
     TheMain,
+    TheOptions,
   },
   data() {},
 };
