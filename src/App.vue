@@ -8,6 +8,7 @@
       </p>
     </BaseHero>
     <TheOptions />
+    <TheResources :resources="resources" />
   </TheMain>
 </template>
 
@@ -16,6 +17,7 @@ import TheHeader from "./components/layout/TheHeader.vue";
 import BaseHero from "./components/UI/BaseHero.vue";
 import TheMain from "./components/layout/TheMain.vue";
 import TheOptions from "./components/layout/TheOptions.vue";
+import TheResources from "./components/layout/TheResources.vue";
 
 export default {
   components: {
@@ -23,8 +25,21 @@ export default {
     BaseHero,
     TheMain,
     TheOptions,
+    TheResources,
   },
-  data() {},
+  data() {
+    return {
+      resources: [
+        {
+          id: 1,
+          title: "Vetur Vue Plugin",
+          body: "Vetur is Vue plugin that helps with linting of vue files.",
+          tag: "Framework",
+          resource: "https://github.com/vuejs/vetur",
+        },
+      ],
+    };
+  },
 };
 </script>
 
