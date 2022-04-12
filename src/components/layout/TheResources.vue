@@ -1,6 +1,6 @@
 <template>
-  <div class="container resources-wrapper">
-    <BaseCard v-for="resource in resources" :key="resource.id">
+  <div class="container resources-wrapper pb-4">
+    <BaseCard class="mt-4" v-for="resource in resources" :key="resource.id">
       <template v-slot:title
         ><p class="fw-bolder">{{ resource.title }}</p></template
       >

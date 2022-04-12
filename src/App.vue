@@ -37,6 +37,13 @@ export default {
           tag: "Framework",
           resource: "https://github.com/vuejs/vetur",
         },
+        {
+          id: 1,
+          title: "Vetur Vue Plugin",
+          body: "Vetur is Vue plugin that helps with linting of vue files.",
+          tag: "Framework",
+          resource: "https://github.com/vuejs/vetur",
+        },
       ],
     };
   },
