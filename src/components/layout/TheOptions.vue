@@ -1,9 +1,16 @@
 <template>
   <div class="container text-center options-wrapper">
-    <BaseButton class="me-4 active" @click="optionToggler('TheResources')"
+    <BaseButton
+      class="me-4"
+      :class="activeButton == 'TheResources' ? 'active' : ''"
+      @click="optionToggler('TheResources')"
       >Stored Resources
     </BaseButton>
-    <BaseButton @click="optionToggler('TheForm')">New Resource</BaseButton>
+    <BaseButton
+      :class="activeButton == 'TheForm' ? 'active' : ''"
+      @click="optionToggler('TheForm')"
+      >New Resource</BaseButton
+    >
   </div>
 </template>
 
@@ -11,6 +18,11 @@
 import BaseButton from "../UI/BaseButton.vue";
 
 export default {
+  data() {
+    return {
+      activeButton: "TheResources",
+    };
+  },
   emits: {
     "set-main": (compName) => {
       if (compName === "TheResources") {
@@ -28,6 +40,7 @@ export default {
   },
   methods: {
     optionToggler(compName) {
+      this.activeButton = compName;
       this.$emit("set-main", compName);
     },
   },
