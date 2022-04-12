@@ -1,6 +1,6 @@
 <template>
   <div class="container text-center options-wrapper">
-    <BaseButton class="me-4">Stored Resources </BaseButton>
+    <BaseButton class="me-4 active">Stored Resources </BaseButton>
     <BaseButton>Add Resource </BaseButton>
   </div>
 </template>
