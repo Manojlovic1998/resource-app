@@ -7,8 +7,9 @@
         You've got ... resources saved.
       </p>
     </BaseHero>
-    <TheOptions />
-    <TheResources :resources="resources" />
+    <TheOptions @set-main="setMainComponent" />
+    <component :is="mainComponent" :resources="resources"></component>
+    <!-- <TheResources :resources="resources" /> -->
   </TheMain>
 </template>
 
@@ -18,6 +19,7 @@ import BaseHero from "./components/UI/BaseHero.vue";
 import TheMain from "./components/layout/TheMain.vue";
 import TheOptions from "./components/layout/TheOptions.vue";
 import TheResources from "./components/layout/TheResources.vue";
+import TheForm from "./components/layout/TheForm.vue";
 
 export default {
   components: {
@@ -26,6 +28,7 @@ export default {
     TheMain,
     TheOptions,
     TheResources,
+    TheForm,
   },
   data() {
     return {
@@ -45,7 +48,14 @@ export default {
           resource: "https://github.com/vuejs/vetur",
         },
       ],
+      mainComponent: "TheResources",
     };
+  },
+  methods: {
+    setMainComponent(compName) {
+      console.log(compName);
+      this.mainComponent = compName;
+    },
   },
 };
 </script>
