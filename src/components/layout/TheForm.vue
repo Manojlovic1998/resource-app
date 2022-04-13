@@ -1,15 +1,15 @@
 <template>
-  <div class="container mt-5">
-    <div class="col-12 col-lg-6 mx-auto">
+  <div class="container mt-5 pb-5">
+    <div class="col-12 col-md-10 col-lg-6 mx-md-auto">
       <form class="form-wrapper d-flex flex-column">
-        <div class="form-heading mx-auto">
+        <div class="form-heading mx-md-auto">
           <h2 class="mb-5 fw-bold">New Resource</h2>
         </div>
-        <div class="form-group mx-auto">
+        <div class="form-group mx-md-auto">
           <label for="title" class="fw-bold text-gray d-block">Title</label>
           <input class="mt-2" type="text" name="title" id="title" />
         </div>
-        <div class="form-group mt-3 mx-auto">
+        <div class="form-group mt-3 mx-md-auto">
           <label for="body" class="fw-bold text-gray d-block"
             >Description</label
           >
@@ -21,7 +21,7 @@
             rows="4"
           ></textarea>
         </div>
-        <div class="form-group mt-2 mx-auto tag-group">
+        <div class="form-group mt-2 mx-md-auto tag-group">
           <label for="tag" class="fw-bold text-gray d-block">Type</label>
           <select name="tag" id="tag" class="mt-2">
             <option value="Plugin">Plugin</option>
@@ -30,7 +30,7 @@
             <option value="Framework">Framework</option>
           </select>
         </div>
-        <div class="button-wrapper mx-auto mt-5">
+        <div class="button-wrapper mx-md-auto mt-5">
           <BaseButton class="active">Add Resource</BaseButton>
         </div>
       </form>
@@ -60,12 +60,49 @@ export default {
   filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
 }
 
+input {
+  max-width: 300px;
+  width: 100%;
+}
+
 input,
 textarea,
 select {
   border: 2px solid rgba(4, 9, 33, 0.32);
   border-radius: 8px;
-  max-width: 400px;
+}
+
+textarea {
+  width: 100%;
+  max-width: 300px;
+}
+
+@media (min-width: 992px) {
+  input,
+  textarea,
+  select {
+    max-width: 400px;
+  }
+
+  #title {
+    width: 300px;
+  }
+
+  #body {
+    width: 300px;
+  }
+
+  .form-heading {
+    width: 350px;
+  }
+
+  .button-wrapper {
+    width: 300px;
+  }
+
+  .tag-group {
+    width: 300px;
+  }
 }
 
 label {
@@ -73,34 +110,18 @@ label {
 }
 
 #title {
-  width: 300px;
   padding: 5px 8px;
-}
-
-#body {
-  width: 300px;
 }
 
 #tag {
   width: 140px;
   text-align: center;
   padding: 5px 8px;
-}
-
-.tag-group {
-  width: 300px;
+  background-color: #ffffff;
 }
 
 option {
   color: #0f0f0f;
   font-weight: 600;
-}
-
-.form-heading {
-  width: 350px;
-}
-
-.button-wrapper {
-  width: 300px;
 }
 </style>
