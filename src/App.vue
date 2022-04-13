@@ -7,7 +7,10 @@
         You've got ... resources saved.
       </p>
     </BaseHero>
-    <TheOptions @set-main="setMainComponent" />
+    <TheOptions
+      @set-main="setMainComponent"
+      :redirectActiveButton="mainComponent"
+    />
     <keep-alive>
       <component
         :is="mainComponent"

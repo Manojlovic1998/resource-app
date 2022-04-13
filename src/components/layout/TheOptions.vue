@@ -18,6 +18,7 @@
 import BaseButton from "../UI/BaseButton.vue";
 
 export default {
+  props: ["redirectActiveButton"],
   data() {
     return {
       activeButton: "TheResources",
@@ -32,6 +33,13 @@ export default {
       } else if (typeof compName !== "string") {
         console.warn("Component should be a string!");
         return false;
+      }
+    },
+  },
+  watch: {
+    redirectActiveButton() {
+      if (this.redirectActiveButton) {
+        this.activeButton = this.redirectActiveButton;
       }
     },
   },
