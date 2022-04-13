@@ -8,7 +8,13 @@
       </p>
     </BaseHero>
     <TheOptions @set-main="setMainComponent" />
-    <component :is="mainComponent" :resources="resources"></component>
+    <keep-alive>
+      <component
+        :is="mainComponent"
+        :resources="resources"
+        @new-resource="addNewResource"
+      ></component>
+    </keep-alive>
     <!-- <TheResources :resources="resources" /> -->
   </TheMain>
 </template>
@@ -34,7 +40,7 @@ export default {
     return {
       resources: [
         {
-          id: 1,
+          id: 2,
           title: "Vetur Vue Plugin",
           body: "Vetur is Vue plugin that helps with linting of vue files.",
           tag: "Framework",
@@ -54,6 +60,10 @@ export default {
   methods: {
     setMainComponent(compName) {
       this.mainComponent = compName;
+    },
+    addNewResource(resource) {
+      this.resources.push(resource);
+      this.setMainComponent("TheResources");
     },
   },
 };

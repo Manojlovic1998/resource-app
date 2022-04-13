@@ -1,13 +1,23 @@
 <template>
   <div class="container mt-5 pb-5">
     <div class="col-12 col-md-10 col-lg-6 mx-md-auto">
-      <form class="form-wrapper d-flex flex-column">
+      <form
+        class="form-wrapper d-flex flex-column"
+        @submit.prevent="addNewResource"
+      >
         <div class="form-heading mx-md-auto">
           <h2 class="mb-5 fw-bold">New Resource</h2>
         </div>
         <div class="form-group mx-md-auto">
           <label for="title" class="fw-bold text-gray d-block">Title</label>
-          <input class="mt-2" type="text" name="title" id="title" />
+          <input
+            class="mt-2"
+            ref="title"
+            type="text"
+            name="title"
+            id="title"
+            required
+          />
         </div>
         <div class="form-group mt-3 mx-md-auto">
           <label for="body" class="fw-bold text-gray d-block"
@@ -19,11 +29,26 @@
             id="body"
             cols="50"
             rows="4"
+            ref="body"
+            required
           ></textarea>
+        </div>
+        <div class="form-group mx-md-auto">
+          <label for="resource" class="fw-bold text-gray d-block"
+            >Resource URL</label
+          >
+          <input
+            class="mt-2"
+            ref="resource"
+            type="url"
+            name="resource"
+            id="resource"
+            required
+          />
         </div>
         <div class="form-group mt-2 mx-md-auto tag-group">
           <label for="tag" class="fw-bold text-gray d-block">Type</label>
-          <select name="tag" id="tag" class="mt-2">
+          <select name="tag" id="tag" class="mt-2" ref="tag">
             <option value="Plugin">Plugin</option>
             <option value="Language">Language</option>
             <option value="Design">Design</option>
@@ -42,13 +67,36 @@
 import BaseButton from "../UI/BaseButton.vue";
 
 export default {
+  props: ["resources"],
+  emits: ["new-resource"],
   components: {
     BaseButton,
   },
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    addNewResource() {
+      let resource = {
+        // Not the best solution for the id
+        // normaly you would use a hash algo to hash the data
+        // sometimes even algo with some salt
+        // for the sake of portfolio project it is good enough :)
+        id: this.resources[0].id + 1,
+        title: this.$refs.title.value,
+        body: this.$refs.body.value,
+        tag: this.$refs.tag.value,
+        resource: this.$refs.resource.value,
+      };
+
+      this.$emit("new-resource", resource);
+
+      this.$refs.title.value = "";
+      this.$refs.body.value = "";
+      this.$refs.tag.value = "";
+      this.$refs.resource.value = "";
+    },
+  },
 };
 </script>
 
@@ -84,7 +132,8 @@ textarea {
     max-width: 400px;
   }
 
-  #title {
+  #title,
+  #resource {
     width: 300px;
   }
 
@@ -109,7 +158,8 @@ label {
   color: #0f0f0f;
 }
 
-#title {
+#title,
+#resource {
   padding: 5px 8px;
 }
 
