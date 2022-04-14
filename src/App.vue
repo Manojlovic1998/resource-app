@@ -4,7 +4,7 @@
     <BaseHero>
       <h1>Welcome back, Nemanja</h1>
       <p class="text-gray mb-0 sub-hero-heading">
-        You've got ... resources saved.
+        You've got {{ resources.length }} resources saved.
       </p>
     </BaseHero>
     <TheOptions
