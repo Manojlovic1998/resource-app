@@ -11,9 +11,12 @@
         ><p class="mb-0 tag">{{ resource.tag }}</p></template
       >
       <template v-slot:resource
-        ><a :href="resource.resource" class="fw-bold"
+        ><a :href="resource.resource" target="_blank" class="fw-bold"
           >View Resource</a
         ></template
+      >
+      <template v-slot:delete
+        ><BaseButton class="btn-sm ms-auto">Delete</BaseButton></template
       >
     </BaseCard>
   </div>
@@ -21,11 +24,13 @@
 
 <script>
 import BaseCard from "../UI/BaseCard.vue";
+import BaseButton from "../UI/BaseButton.vue";
 
 export default {
   props: ["resources"],
   components: {
     BaseCard,
+    BaseButton,
   },
 };
 </script>
@@ -38,6 +43,14 @@ export default {
 .tag {
   color: #686868;
   font-weight: 600;
+}
+
+.btn-sm {
+  background-color: #dd5147;
+}
+
+.btn-sm:hover {
+  background-color: #c74940;
 }
 
 a {

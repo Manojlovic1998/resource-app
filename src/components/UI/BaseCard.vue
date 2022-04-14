@@ -11,8 +11,9 @@
         <slot name="tag"></slot>
       </BaseTag>
     </div>
-    <div class="col-12">
+    <div class="col-12 d-flex">
       <slot name="resource"></slot>
+      <slot name="delete"></slot>
     </div>
   </div>
 </template>
