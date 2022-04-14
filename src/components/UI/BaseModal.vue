@@ -16,7 +16,7 @@
 
 <style scoped>
 .message-modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   z-index: 1;
