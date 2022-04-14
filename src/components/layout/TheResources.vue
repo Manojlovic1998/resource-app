@@ -16,7 +16,7 @@
         ></template
       >
       <template v-slot:delete
-        ><BaseButton class="btn-sm ms-auto" @click="modalToggler"
+        ><BaseButton class="btn-sm ms-auto" @click="modalToggler(resource)"
           >Delete</BaseButton
         ></template
       >
@@ -30,19 +30,18 @@ import BaseButton from "../UI/BaseButton.vue";
 
 export default {
   props: ["resources"],
-  data() {
-    return {
-      modalStatus: false,
-    };
-  },
+  emits: ["toggle-modal"],
   components: {
     BaseCard,
     BaseButton,
   },
   methods: {
-    modalToggler() {
-      this.modalStatus = !this.modalStatus;
-      console.log(this.modalStatus);
+    modalToggler(resource) {
+      let modal = {
+        modalStatus: true,
+        resource: resource,
+      };
+      this.$emit("toggle-modal", modal);
     },
   },
 };

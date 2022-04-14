@@ -16,10 +16,30 @@
         :is="mainComponent"
         :resources="resources"
         @new-resource="addNewResource"
+        @toggle-modal="toggleModal"
       ></component>
     </keep-alive>
     <!-- <TheResources :resources="resources" /> -->
   </TheMain>
+  <BaseModal v-if="showModal">
+    <template v-slot:title
+      ><p class="fs-4 fw-bold mb-0">Confirm Action</p></template
+    >
+    <template v-slot:body
+      ><p>
+        Are you sure you want to delete
+        <strong>{{ modalData.title }}</strong
+        >?
+      </p></template
+    >
+    <template v-slot:actions
+      ><BaseButton
+        class="me-3 btn-sm active"
+        @click="toggleModal({ modalStatus: false })"
+        >Cancel</BaseButton
+      ><BaseButton class="me-3 btn-sm btn-danger">Delete</BaseButton></template
+    >
+  </BaseModal>
 </template>
 
 <script>
@@ -29,6 +49,8 @@ import TheMain from "./components/layout/TheMain.vue";
 import TheOptions from "./components/layout/TheOptions.vue";
 import TheResources from "./components/layout/TheResources.vue";
 import TheForm from "./components/layout/TheForm.vue";
+import BaseModal from "./components/UI/BaseModal.vue";
+import BaseButton from "./components/UI/BaseButton.vue";
 
 export default {
   components: {
@@ -38,6 +60,8 @@ export default {
     TheOptions,
     TheResources,
     TheForm,
+    BaseModal,
+    BaseButton,
   },
   data() {
     return {
@@ -58,6 +82,12 @@ export default {
         },
       ],
       mainComponent: "TheResources",
+      showModal: false,
+      modalData: {
+        title: "",
+        body: "",
+        tag: "",
+      },
     };
   },
   methods: {
@@ -67,6 +97,14 @@ export default {
     addNewResource(resource) {
       this.resources.push(resource);
       this.setMainComponent("TheResources");
+    },
+    toggleModal(modalData) {
+      if (!modalData.resource) {
+        this.showModal = modalData.modalStatus;
+      } else {
+        this.showModal = modalData.modalStatus;
+        this.modalData = modalData.resource;
+      }
     },
   },
 };
@@ -92,5 +130,15 @@ h3 {
 
 .text-gray {
   color: #828282;
+}
+</style>
+
+<style scoped>
+.btn-danger {
+  background-color: #c74940;
+}
+
+.btn-danger:hover {
+  background-color: #dd5147;
 }
 </style>
