@@ -77,12 +77,16 @@ export default {
   },
   methods: {
     addNewResource() {
+      let id = !(this.resources[0] === undefined)
+        ? this.resources[0].id + 1
+        : 1;
+
       let resource = {
         // Not the best solution for the id
         // normaly you would use a hash algo to hash the data
         // sometimes even algo with some salt
         // for the sake of portfolio project it is good enough :)
-        id: this.resources[0].id + 1,
+        id,
         title: this.$refs.title.value,
         body: this.$refs.body.value,
         tag: this.$refs.tag.value,
