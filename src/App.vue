@@ -37,7 +37,11 @@
         class="me-3 btn-sm active"
         @click="toggleModal({ modalStatus: false })"
         >Cancel</BaseButton
-      ><BaseButton class="me-3 btn-sm btn-danger">Delete</BaseButton></template
+      ><BaseButton
+        class="me-3 btn-sm btn-danger"
+        @click="deleteResource(modalData)"
+        >Delete</BaseButton
+      ></template
     >
   </BaseModal>
 </template>
@@ -105,6 +109,10 @@ export default {
         this.showModal = modalData.modalStatus;
         this.modalData = modalData.resource;
       }
+    },
+    deleteResource(modalData) {
+      this.resources = this.resources.filter((el) => el.id != modalData.id);
+      this.toggleModal({ modalStatus: false });
     },
   },
 };
