@@ -44,6 +44,13 @@
       ></template
     >
   </BaseModal>
+  <Teleport to="body">
+    <BasePageOverlay
+      v-if="showModal"
+      @click="toggleModal({ modalStatus: false })"
+      class="overlay"
+    />
+  </Teleport>
 </template>
 
 <script>
@@ -55,6 +62,7 @@ import TheResources from "./components/layout/TheResources.vue";
 import TheForm from "./components/layout/TheForm.vue";
 import BaseModal from "./components/UI/BaseModal.vue";
 import BaseButton from "./components/UI/BaseButton.vue";
+import BasePageOverlay from "./components/UI/BasePageOverlay.vue";
 
 export default {
   components: {
@@ -66,6 +74,7 @@ export default {
     TheForm,
     BaseModal,
     BaseButton,
+    BasePageOverlay,
   },
   data() {
     return {
